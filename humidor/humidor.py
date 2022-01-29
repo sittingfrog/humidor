@@ -16,4 +16,3 @@ class THMonitor():
     def get_sensor_data(self):
         for d in self.sensors:
             d['last_reading'] = d['device'].read_sensor()
-        
