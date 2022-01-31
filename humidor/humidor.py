@@ -23,7 +23,7 @@ class THMonitor():
         print(f'{self._timestamp()} Initiating sensor reading...')
         for sensor in self.sensors:
             self._read_sensor_data(sensor)
-            
+        
             
     def _read_sensor_data(self, sensor):
         s = sensor
@@ -42,4 +42,12 @@ class THMonitor():
             
         except:
             print(f'{self._timestamp()} Sensor reading failed.')
-                
+        
+    def _format_reading(self, sensor):
+        s = sensor
+        return {
+            'name': s['name'],
+            'last_reading_at': s['last_reading_at'],
+            'temperature_farenheit': s['last_reading']['temperature_farenheit'],
+            'humidity': s['last_reading']['humidity'],
+        }
