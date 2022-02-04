@@ -1,24 +1,32 @@
+
+import os
 import json
 from humidor import THMonitor
-import blynklib
-# import blynklib_mp as blynklib # micropython import
 
-BLYNK_AUTH = 'IGDwtWzLwTuyhjI4Mk5VBIWbdk67DXzx' 
-blynk = blynklib.Blynk(BLYNK_AUTH)
 
 thm = THMonitor()
 thm.read_sensors()
 
-readings = [thm._format_reading(s) for s in thm.sensors]
-# [print(reading) for reading in readings]
 
-pin = 'V0'
-@blynk.handle_event('read V0')
-def read_virtual_pin_handler(pin):
-    
-    sensor_data = str(readings[0]['temperature_farenheit'])
-    print(sensor_data)
-    blynk.virtual_read(pin, sensor_data)
+import pandas as pd
+df = pd.read_json(thm.DATA_FILE, lines=True)
+df['event_timestamp'] = pd.to_datetime(
+    df['event_timestamp'],
+    format='%Y-%m-%d %H:%M:%S.%f',
+)
+df.set_index('event_timestamp', inplace=True)
 
-while True:
-    blynk.run()
+import matplotlib.pyplot as plt
+
+fig, ax = plt.subplots(figsize=(12, 6))
+
+for g in df.groupby('name'):
+    plt.plot(g[1]['humidity'], label=g[0])
+
+plt.axhline(y=60, dashes=(1,1,1,1), color='r')
+
+leg = ax.legend()
+# leg = ax.legend(loc='center', bbox_to_anchor=(0.5, -0.10), shadow=False, ncol=2)
+plt.show()
+
+# https://stackabuse.com/add-a-legend-to-figure-in-matplotlib/

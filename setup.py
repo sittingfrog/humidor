@@ -11,7 +11,8 @@ setup(
     install_requires=[
         'pyyaml',
         'inkbird @ https://github.com/sittingfrog/inkbird/archive/refs/tags/0.1.0.tar.gz',
-        'blynklib',
+        'pandas',
+        'matplotlib',
     ],
 
     classifiers=[
