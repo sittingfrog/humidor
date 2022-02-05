@@ -14,19 +14,36 @@ df['event_timestamp'] = pd.to_datetime(
     df['event_timestamp'],
     format='%Y-%m-%d %H:%M:%S.%f',
 )
-df.set_index('event_timestamp', inplace=True)
+#df.set_index('event_timestamp', inplace=True)
 
-import matplotlib.pyplot as plt
+import bokeh.plotting as bp
+from bokeh.models import ColumnDataSource
 
-fig, ax = plt.subplots(figsize=(12, 6))
+aspect_ratio = 16/9
+width = 800
+height = round(width/aspect_ratio)
+
+bp.output_file(thm.HUMIDITY_PLOT_FILE)
+p = bp.figure(
+    x_axis_type="datetime",
+    width=width,
+    height=height,
+)
+color_map = {s['name']: s['label'] for s in thm.sensors}
 
 for g in df.groupby('name'):
-    plt.plot(g[1]['humidity'], label=g[0])
+    p.line(
+        x='event_timestamp',
+        y='humidity',
+        line_width=1,
+        source=ColumnDataSource(g[1]),
+        legend_label=g[0],
+        color=color_map[g[0]],
+    )
 
-plt.axhline(y=60, dashes=(1,1,1,1), color='r')
+p.title.text = 'Humidity'
+p.yaxis.axis_label = 'RH (%)'
 
-leg = ax.legend()
-# leg = ax.legend(loc='center', bbox_to_anchor=(0.5, -0.10), shadow=False, ncol=2)
-plt.show()
+bp.show(p)
 
-# https://stackabuse.com/add-a-legend-to-figure-in-matplotlib/
+# https://programminghistorian.org/en/lessons/visualizing-with-bokeh

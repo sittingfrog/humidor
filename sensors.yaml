@@ -15,4 +15,4 @@ sensors:
     sensor_type: Inkbird_IBSTH2
     mac_address: '49:42:08:00:5E:A4'
     name: 'spare'
-    label: 'none'
+    label: 'yellow'

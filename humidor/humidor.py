@@ -19,6 +19,7 @@ class THMonitor():
     
     FLASH_DRIVE_PATH = '/media/pi/humidor/'
     DATA_FILE = FLASH_DRIVE_PATH + 'data.json'
+    HUMIDITY_PLOT_FILE = FLASH_DRIVE_PATH + 'humidity.html'
     
     def _timestamp(self):
         return datetime.utcnow()
@@ -26,9 +27,12 @@ class THMonitor():
     def read_sensors(self, write_to_file=True):
         print(f'{self._timestamp()} Initiating sensor reading...')
         for sensor in self.sensors:
-            self._read_sensor_data(sensor)
-            payload = self._reading_to_json(sensor)
-            self._reading_to_file(payload)     
+            try:
+                self._read_sensor_data(sensor)
+                payload = self._reading_to_json(sensor)
+                self._reading_to_file(payload)
+            except:
+                pass
             
     def _read_sensor_data(self, sensor):
         s = sensor
