@@ -11,8 +11,6 @@ setup(
     install_requires=[
         'pyyaml',
         'inkbird @ https://github.com/sittingfrog/inkbird/archive/refs/tags/0.2.0.tar.gz',
-        'pandas',
-        'bokeh',
     ],
 
     classifiers=[

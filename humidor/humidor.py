@@ -17,7 +17,7 @@ class THMonitor():
         self.sensors = yaml_content['sensors']
         print(f'{self._timestamp()} THMonitor initialized.')
     
-    FLASH_DRIVE_PATH = '/media/pi/humidor/'
+    FLASH_DRIVE_PATH =  '' # '/media/pi/humidor/'
     DATA_FILE = FLASH_DRIVE_PATH + 'data.json'
     HUMIDITY_PLOT_FILE = FLASH_DRIVE_PATH + 'humidity.html'
     
