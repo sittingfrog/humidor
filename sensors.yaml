@@ -2,17 +2,20 @@ sensors:
   -
     sensor_type: 'Inkbird_IBSTH2'
     mac_address: '49:42:08:00:5C:61'
-    name: 'brigham'
-    label: 'red'
+    name: 'audew1'
+    label: 'yellow'
+    humidity_offset: -5
 
   -
     sensor_type: 'Inkbird_IBSTH2'
     mac_address: '49:42:08:00:50:D7'
-    name: 'nanuk'
+    name: 'audew2'
     label: 'blue'
+    humidity_offset: 0
 
   -
     sensor_type: Inkbird_IBSTH2
     mac_address: '49:42:08:00:5E:A4'
-    name: 'spare'
-    label: 'yellow'
+    name: 'audew3'
+    label: 'green'
+    humidity_offset: 0
