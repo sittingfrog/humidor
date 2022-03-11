@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='humidor',
-    version='0.1.0',    
+    version='0.2.0',    
     description='Humidor monitoring application',
     url='https://github.com/sittingfrog/humidor',
     author='sittingfrog',
@@ -10,7 +10,7 @@ setup(
     packages=['humidor'],
     install_requires=[
         'pyyaml',
-        'inkbird @ https://github.com/sittingfrog/inkbird/archive/refs/tags/0.2.0.tar.gz',
+        'inkbird @ https://github.com/sittingfrog/inkbird/archive/refs/tags/0.3.0.tar.gz',
     ],
 
     classifiers=[
