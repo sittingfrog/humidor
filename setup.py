@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='humidor',
-    version='0.2.0',    
+    version='0.3.0',    
     description='Humidor monitoring application',
     url='https://github.com/sittingfrog/humidor',
     author='sittingfrog',
