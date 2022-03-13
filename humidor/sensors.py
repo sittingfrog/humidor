@@ -8,14 +8,14 @@ from inkbird import InkbirdIBSTH
 
 class Sensors():
     def __init__(self, config_yaml='sensors.yaml'):
-        print(f'{self._timestamp()} Initializing THMonitor...')
+        print(f'{self._timestamp()} Initializing Sensors...')
         with open(config_yaml) as f:
             yaml_content = yaml.safe_load(f)
         f.close()
         for d in yaml_content['sensors']:
             d['device'] = InkbirdIBSTH(d['mac_address'], d['sensor_type'], d['humidity_offset'])
         self.sensors = yaml_content['sensors']
-        print(f'{self._timestamp()} THMonitor initialized.')
+        print(f'{self._timestamp()} Sensors initialized.')
     
     FLASH_DRIVE_PATH =  '' # '/media/pi/humidor/'
     DATA_FILE = FLASH_DRIVE_PATH + 'data.json'
