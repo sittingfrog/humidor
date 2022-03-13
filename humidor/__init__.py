@@ -1,1 +1,1 @@
-from .humidor import Sensors
+from .sensors import Sensors

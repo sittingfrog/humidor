@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from humidor import Sensors
+from sensors import Sensors
 
 if __name__ == "__main__":
     s = Sensors()
