@@ -10,7 +10,7 @@ setup(
     packages=['humidor'],
     install_requires=[
         'pyyaml',
-        'inkbird @ https://github.com/sittingfrog/inkbird/archive/refs/tags/0.3.0.tar.gz',
+        'inkbird @ https://github.com/sittingfrog/inkbird/archive/refs/tags/0.5.0.tar.gz',
     ],
 
     classifiers=[

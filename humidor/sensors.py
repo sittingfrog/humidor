@@ -6,7 +6,7 @@ from datetime import datetime
 from inkbird import InkbirdIBSTH
 
 
-class THMonitor():
+class Sensors():
     def __init__(self, config_yaml='sensors.yaml'):
         print(f'{self._timestamp()} Initializing THMonitor...')
         with open(config_yaml) as f:
@@ -19,7 +19,6 @@ class THMonitor():
     
     FLASH_DRIVE_PATH =  '' # '/media/pi/humidor/'
     DATA_FILE = FLASH_DRIVE_PATH + 'data.json'
-    HUMIDITY_PLOT_FILE = FLASH_DRIVE_PATH + 'humidity.html'
     
     def _timestamp(self):
         return datetime.utcnow()
@@ -82,5 +81,5 @@ class THMonitor():
 
 
 if __name__ == "__main__":
-    thm = THMonitor()
-    thm.read_sensors()
+    s = Sensors()
+    s.read_sensors()

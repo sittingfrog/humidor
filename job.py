@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
-from humidor import THMonitor
+from humidor import Sensors
 
 if __name__ == "__main__":
-    thm = THMonitor()
-    thm.read_sensors()
+    s = Sensors()
+    s.read_sensors()

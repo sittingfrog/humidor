@@ -1,1 +1,1 @@
-from .humidor import THMonitor
+from .humidor import Sensors
